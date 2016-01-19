@@ -1,0 +1,35 @@
+提交代码到远程库步骤1-10
+1.mkdir mygit	创建一个空文件夹
+2.cd mygit		进入此目录
+3.git init --bare		初始化为git仓库
+4.git clone https://github.com/guonn/project		将远程库克隆到本地
+5.cd project	进入此目录
+6.touch b.txt		创建一个空文件
+7.git add b.txt		添加到本地仓库
+8.git commit -m 'test'		提交到本地仓库
+9.git push origin master		从本地仓库push到远程库的master分支
+按提示输入用户名密码
+10.查看https://github.com/guonn/project 下已经多了b.txt
+=======================================================================================
+checkout与reset
+
+git checkout * 或者git checkout a.txt 获取指定文件的最新版本
+
+git reset --hard 修改文件后未执行git add *，想回退执行此命令
+git reset --hard 版本号 回退到某个版本
+git reflog	查看版本号
+
+========================================================================================
+
+查看分支：git branch
+
+创建分支：git branch name
+
+切换分支：git checkout name
+
+创建+切换分支：git checkout –b name
+
+合并某分支到当前分支：git merge name
+
+删除分支：git branch –d name
+

@@ -1,0 +1,27 @@
+Or use it as a maven dependency:
+
+<dependency>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+    <version>2.7.2</version>
+    <type>jar</type>
+    <scope>compile</scope>
+</dependency>
+
+To use it just:
+
+Jedis jedis = new Jedis("localhost");
+jedis.set("foo", "bar");
+String value = jedis.get("foo");
+
+
+Jedis Cluster
+
+Redis cluster specification (still under development) is implemented
+
+Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
+//Jedis Cluster will attempt to discover cluster nodes automatically
+jedisClusterNodes.add(new HostAndPort("127.0.0.1", 7379));
+JedisCluster jc = new JedisCluster(jedisClusterNodes);
+jc.set("foo", "bar");
+String value = jc.get("foo");

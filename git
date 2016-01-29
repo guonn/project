@@ -1,0 +1,97 @@
+git
+1.取得项目的 Git 仓库
+
+有两种取得 Git 项目仓库的方法。第一种是在现存的目录下，通过导入所有文件来创建新的 Git 仓库。第二种是从已有的 Git 仓库克隆出一个新的镜像仓库来。
+	
+	a.在工作目录中初始化新仓库
+	  #Create an empty git repository or reinitialize an existing one
+	  git init
+	  把文件纳入版本控制
+	  git add <filename>
+	  git commit -m "initial project version"
+	b.从现有仓库克隆
+	   #Clone a repository into the directory,default the current directory
+	   git clone https://github.com/guonn/project.git /home/guonn/Documents
+	   git clone https://github.com/guonn/project.git 
+
+2.忽略某些文件
+创建一个名为 .gitignore 的文件
+文件 .gitignore 的格式规范如下：
+    所有空行或者以注释符号 ＃ 开头的行都会被 Git 忽略。
+    可以使用标准的 glob 模式匹配. * 匹配模式最后跟反斜杠（/）说明要忽略的是目录。 * 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
+
+    所谓的 glob 模式是指 shell 所使用的简化了的正则表达式。星号（*）匹配零个或多个任意字符；[abc] 匹配任何一个列在方括号中的字符（这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c）；问号（?）只匹配一个任意字符；如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如[0-9] 表示匹配所有 0 到 9 的数字）。
+
+我们再看一个 .gitignore 文件的例子：
+
+# 此为注释 – 将被 Git 忽略
+*.a       # 忽略所有 .a 结尾的文件
+!lib.a    # 但 lib.a 除外
+/TODO     # 仅仅忽略项目根目录下的 TODO 文件，
+
+
+3. git rm <filename>
+如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 -f
+
+4.git mv file_from file_to
+
+5.#Show the working tree status
+git status
+
+6.#查看提交历史
+默认不用任何参数的话，git log 会按提交时间列出所有的更新，最近的更新排在最上面
+git log
+
+我们常用 -p 选项展开显示每次提交的内容差异，用 -n 则仅显示最近n次更新：
+git log -p -2
+
+--stat，仅显示简要的增改行数统计
+git log --stat
+
+显示暂存区和版本库间的差别
+git diff --cached
+
+7.清除工作目录树中的修改
+ git checkout HEAD <some file> [<some file>]
+
+取消已暂存但尚未提交的修改的暂存标识
+git reset HEAD <some file> [<some file>]
+
+修复上一次提交中的问题，并复用上次的提交注释
+git commit -C HEAD --amend
+
+8.查看远程仓库信息
+git remote show
+
+git remote show origin
+{
+git remote show origin
+* remote origin
+  Fetch URL: https://github.com/guonn/project.git
+  Push  URL: https://github.com/guonn/project.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+}
+
+
+9.远程仓库的删除和重命名
+git remote rm <dir/file>
+git remote rename fr_name to_name
+
+10.列显已有的标签 git tag
+11.建标签 git tag -a v1.0 -m 'My Version 1.0'
+
+
+11.列出本地分支  git branch
+列出远程分支  git branch -r
+列出所有分支  git branch -a
+删除分支  git branch -d <branch_name>
+
+
+
+

@@ -1,0 +1,45 @@
+1.sudo netstat -tnlp
+
+2.#change arguments of redis,for example
+port,timeout,bind ip ....
+
+vi /etc/redis/redis.conf 
+
+3.#service
+cd /etc/init.d/
+sudo service redis-server start|stop|restart|force-reload
+	
+4.客户端连接
+/etc/init.d/redis-cli
+
+5.#If you want you can bind a single interface
+bind 127.0.0.0
+
+#specified all the interfaces will listen for incoming connections.
+bind 0.0.0.0
+
+
+
+redis 命令
+
+set <key> <value>
+get <key>
+append <key> <value>
+del <key>
+exists <key>	(1 exist,0 not exist)
+getset <key> <value>  (set the key new value,return the old value)
+rename <key> <newKey>
+
+incr <key> 	(increment the integer value of a key by one)
+decr <key> 	(decrement the integer value of a key by one)
+
+RPUSH <key>	(Append on or multiple values to a list)
+RPOP <key>	(Remove and get the last element in a list)
+LLEN <key>	(Get the length of a list)
+LRANGE <KEY> 0 -1	(Get a range of elements from a list)
+
+
+subscribe <channel ...>		(listen for messages published to the given channels)
+publish <channel> <message>	(post message to a channel)
+
+type <key>	(Determine the type stored at key)
